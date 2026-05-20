@@ -21,7 +21,7 @@ Check:
 
 ## Backend Environment Variables
 
-Add these on Render:
+You do not have a Render account yet, so backend deployment is pending. When you create a backend hosting account, add these environment variables there:
 
 ```env
 NODE_ENV=production
@@ -52,6 +52,8 @@ VITE_API_URL=/api
 
 ## Render Backend Settings
 
+Use these settings after creating a Render account, or use the same values on another Node backend host such as Railway or a VPS:
+
 - Root directory: `server`
 - Build command: `npm install`
 - Start command: `npm start`
@@ -67,8 +69,8 @@ VITE_API_URL=/api
 
 - Create a production database.
 - Create a database user with a strong password.
-- Add the Render outbound IP addresses in Network Access.
-- Use `0.0.0.0/0` only if you understand the security tradeoff.
+- Add the backend host outbound IP addresses in Network Access.
+- Until the backend host is final, use `0.0.0.0/0` only for temporary testing, then replace it with the real deployment IP allowlist.
 - URL-encode special characters in the database password.
 
 ## Final Checks
