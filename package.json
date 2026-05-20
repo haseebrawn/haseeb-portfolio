@@ -2,11 +2,14 @@
   "name": "muhammad-haseeb-portfolio",
   "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "client"
+  ],
   "scripts": {
     "install-all": "npm --prefix server install && npm --prefix client install",
-    "build": "npm --prefix client run build",
+    "build": "npm --workspace client run build",
     "start": "npm --prefix server start",
     "dev-server": "npm --prefix server run dev",
-    "dev-client": "npm --prefix client run dev"
+    "dev-client": "npm --workspace client run dev"
   }
 }
