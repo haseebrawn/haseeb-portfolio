@@ -61,9 +61,10 @@ Use these settings after creating a Render account, or use the same values on an
 
 ## Vercel Frontend Settings
 
-- Root directory: `client`
+- Root directory: project root / blank
+- Install command: `npm install`
 - Build command: `npm run build`
-- Output directory: `dist`
+- Output directory: `client/dist`
 
 ## MongoDB Atlas
 
