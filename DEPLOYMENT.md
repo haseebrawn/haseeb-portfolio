@@ -51,6 +51,7 @@ Use these settings:
 - Base directory: project root / blank
 - Build command: `npm run build`
 - Publish directory: `client/dist`
+- Keep the `netlify.toml` build environment settings so Netlify installs Vite build dependencies even when `NODE_ENV=production`.
 
 This repo includes:
 
