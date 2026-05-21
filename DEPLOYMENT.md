@@ -66,6 +66,21 @@ Use these settings after creating a Render account, or use the same values on an
 - Build command: `npm run build`
 - Output directory: `client/dist`
 
+## Netlify Frontend Settings (Alternative)
+
+Netlify can host the frontend, but it will not run the Express backend directly (unless you convert it to Netlify Functions).
+
+Use these settings:
+
+- Base directory: `client`
+- Build command: `npm run build`
+- Publish directory: `client/dist`
+
+Then either:
+
+1) Set `VITE_API_URL` in Netlify env vars to your backend URL (example: `https://your-backend.onrender.com/api`), **or**
+2) Use `netlify.toml` redirects to proxy `/api/*` and `/uploads/*` to your backend domain.
+
 ## MongoDB Atlas
 
 - Create a production database.
