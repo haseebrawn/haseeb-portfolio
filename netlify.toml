@@ -1,21 +1,16 @@
 [build]
-  base = "client"
   command = "npm run build"
-  publish = "dist"
+  publish = "client/dist"
+  functions = "netlify/functions"
 
-# If you deploy the API separately (Render/Railway/Fly/VPS), you can proxy
-# requests so the frontend can keep using "/api" and "/uploads" in production.
-# Replace the target domains below with your live backend URL.
+[functions]
+  external_node_modules = ["express", "mongoose", "serverless-http"]
+  node_bundler = "esbuild"
 
+# SPA fallback (React Router)
 [[redirects]]
   from = "/api/*"
-  to = "https://YOUR_BACKEND_DOMAIN/api/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/uploads/*"
-  to = "https://YOUR_BACKEND_DOMAIN/uploads/:splat"
+  to = "/.netlify/functions/api/api/:splat"
   status = 200
   force = true
 

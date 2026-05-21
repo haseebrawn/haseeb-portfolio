@@ -68,18 +68,39 @@ Use these settings after creating a Render account, or use the same values on an
 
 ## Netlify Frontend Settings (Alternative)
 
-Netlify can host the frontend, but it will not run the Express backend directly (unless you convert it to Netlify Functions).
+Netlify can host the frontend. For the backend you have two options:
+
+1) Host the backend on a separate Node host (Render/Railway/Fly/VPS), or
+2) Run the Express backend on **Netlify Functions** (serverless) using `serverless-http`.
 
 Use these settings:
 
-- Base directory: `client`
 - Build command: `npm run build`
 - Publish directory: `client/dist`
 
-Then either:
+### Option A: Separate backend host
 
-1) Set `VITE_API_URL` in Netlify env vars to your backend URL (example: `https://your-backend.onrender.com/api`), **or**
-2) Use `netlify.toml` redirects to proxy `/api/*` and `/uploads/*` to your backend domain.
+Set `VITE_API_URL` in Netlify env vars to your backend URL (example: `https://your-backend.example.com/api`).
+
+Notes:
+
+- If `VITE_API_URL` is missing, the frontend will call `/api/...` on the Netlify domain and you will see 404/502 errors in the browser console.
+
+### Option B: Netlify Functions (backend on Netlify)
+
+This repo includes:
+
+- `netlify/functions/api.js` (Express wrapped with `serverless-http`)
+- `netlify.toml` redirect: `/api/*` → `/.netlify/functions/api/api/:splat`
+
+Required Netlify environment variables:
+
+```env
+NODE_ENV=production
+MONGO_URI=...
+JWT_SECRET=...
+CLIENT_URL=https://YOUR_NETLIFY_DOMAIN.netlify.app
+```
 
 ## MongoDB Atlas
 

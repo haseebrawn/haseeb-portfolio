@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "client"
+    "client",
+    "server"
   ],
   "scripts": {
     "install-all": "npm --prefix server install && npm --prefix client install",
