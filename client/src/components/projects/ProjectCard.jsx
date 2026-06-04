@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
-import { FiArrowRight, FiExternalLink, FiFolder } from 'react-icons/fi'
+import { FiArrowRight, FiCode, FiExternalLink, FiFolder } from 'react-icons/fi'
 import Card from '../common/Card'
 
 const ProjectCard = ({ project }) => {
+  const hasGithubUrl = project.githubUrl && project.githubUrl !== '#'
+
   return (
     <Card className="group overflow-hidden" hover>
       <div className="relative h-56 overflow-hidden bg-soft">
@@ -27,6 +29,21 @@ const ProjectCard = ({ project }) => {
           <span className="absolute left-5 top-5 rounded-full bg-primary px-4 py-2 text-xs font-black text-white shadow-lg shadow-blue-500/20">
             Featured
           </span>
+        )}
+
+        {hasGithubUrl && (
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="absolute inset-0 flex items-center justify-center bg-dark/55 opacity-0 transition duration-300 hover:opacity-100 focus:opacity-100"
+            aria-label={`View ${project.title} source code on GitHub`}
+          >
+            <span className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-black text-primary shadow-xl shadow-slate-900/20">
+              <FiCode />
+              Code
+            </span>
+          </a>
         )}
       </div>
 
