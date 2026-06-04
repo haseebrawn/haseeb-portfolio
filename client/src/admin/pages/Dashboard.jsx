@@ -25,6 +25,7 @@ const defaultDashboardData = {
     activeSkills: 0,
     totalExperience: 0,
     activeExperience: 0,
+    currentExperience: 0,
     totalMessages: 0,
     unreadMessages: 0,
     readMessages: 0,
@@ -32,6 +33,7 @@ const defaultDashboardData = {
   },
   recentMessages: [],
   recentProjects: [],
+  currentRole: null,
 }
 
 const formatDate = (date) => {
@@ -49,6 +51,23 @@ const statusClass = {
   read: 'bg-yellow-50 text-yellow-700',
   replied: 'bg-green-50 text-green-700',
 }
+
+const normalizeDashboardData = (data) => ({
+  ...defaultDashboardData,
+  ...data,
+  stats: {
+    ...defaultDashboardData.stats,
+    ...(data?.stats || {}),
+    totalExperience:
+      data?.stats?.totalExperience ?? data?.stats?.totalExperiences ?? 0,
+    activeExperience:
+      data?.stats?.activeExperience ?? data?.stats?.activeExperiences ?? 0,
+    currentExperience: data?.stats?.currentExperience ?? 0,
+  },
+  recentMessages: Array.isArray(data?.recentMessages) ? data.recentMessages : [],
+  recentProjects: Array.isArray(data?.recentProjects) ? data.recentProjects : [],
+  currentRole: data?.currentRole || null,
+})
 
 const Dashboard = () => {
   const { admin } = useAuth()
@@ -69,7 +88,7 @@ const Dashboard = () => {
       setError('')
 
       const data = await adminDashboardService.getStats()
-      setDashboardData(data)
+      setDashboardData(normalizeDashboardData(data))
     } catch (error) {
       setError(
         error.response?.data?.message ||
@@ -86,6 +105,9 @@ const Dashboard = () => {
   }, [])
 
   const { stats, recentMessages, recentProjects } = dashboardData
+  const currentRoleLabel = dashboardData.currentRole
+    ? dashboardData.currentRole.title
+    : `${stats.currentExperience ?? 0} current role`
 
   return (
     <div>
@@ -140,10 +162,10 @@ const Dashboard = () => {
 
         <AdminStatCard
           title="Experience"
-          value={stats.totalExperience}
+          value={stats.totalExperience ?? 0}
           icon={FiBriefcase}
-          description={`${stats.activeExperience} active experience entries`}
-          trend="Professional background"
+          description={`${stats.currentExperience ?? stats.activeExperience ?? 0} current role experience`}
+          trend={currentRoleLabel}
           loading={loading}
         />
 

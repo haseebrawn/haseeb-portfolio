@@ -1,7 +1,7 @@
 const Project = require('../models/Project')
 const Skill = require('../models/Skill')
 const ContactMessage = require('../models/ContactMessage')
-const experience = require('../models/Experience')
+const Experience = require('../models/Experience')
 const asyncHandler = require('../utils/asyncHandler')
 
 const getDashboardStats = asyncHandler(async (req, res) => {
@@ -12,14 +12,16 @@ const getDashboardStats = asyncHandler(async (req, res) => {
     inactiveProjects,
     totalSkills,
     activeSkills,
+    totalExperience,
+    activeExperience,
+    currentExperience,
     totalMessages,
     unreadMessages,
     readMessages,
     repliedMessages,
     recentMessages,
     recentProjects,
-    totalExperiences,
-    activeExperiences,
+    currentRole,
   ] = await Promise.all([
     Project.countDocuments(),
     Project.countDocuments({ isActive: true }),
@@ -29,8 +31,9 @@ const getDashboardStats = asyncHandler(async (req, res) => {
     Skill.countDocuments(),
     Skill.countDocuments({ isActive: true }),
 
-    experience.countDocuments(),
-    experience.countDocuments({ isActive: true }),
+    Experience.countDocuments(),
+    Experience.countDocuments({ isCurrent: true }),
+    Experience.countDocuments({ isCurrent: true }),
 
     ContactMessage.countDocuments(),
     ContactMessage.countDocuments({ status: 'unread' }),
@@ -46,6 +49,10 @@ const getDashboardStats = asyncHandler(async (req, res) => {
       .sort({ createdAt: -1 })
       .limit(5)
       .select('title slug category featured isActive createdAt'),
+
+    Experience.findOne({ isCurrent: true })
+      .sort({ displayOrder: 1, startDate: -1 })
+      .select('title company employmentType startDate isCurrent'),
   ])
 
   res.json({
@@ -58,15 +65,19 @@ const getDashboardStats = asyncHandler(async (req, res) => {
         inactiveProjects,
         totalSkills,
         activeSkills,
+        totalExperience,
+        activeExperience,
+        currentExperience,
         totalMessages,
         unreadMessages,
         readMessages,
         repliedMessages,
-        totalExperiences,
-        activeExperiences,
+        totalExperiences: totalExperience,
+        activeExperiences: activeExperience,
       },
       recentMessages,
       recentProjects,
+      currentRole,
     },
   })
 })
