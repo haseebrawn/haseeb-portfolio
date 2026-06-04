@@ -5,6 +5,9 @@ import Badge from '../common/Badge'
 import AvatarIllustration from '../common/AvatarIllustration'
 import { useProfile } from '../../context/ProfileContext'
 
+const apiBaseUrl = import.meta.env.VITE_API_URL || '/api'
+const resumeDownloadUrl = `${apiBaseUrl.replace(/\/$/, '')}/profile/resume`
+
 const HeroSection = () => {
   const { profile } = useProfile()
 
@@ -42,24 +45,22 @@ const HeroSection = () => {
               )}
             </div>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <Button to="/projects" icon={<FiArrowRight />}>
                 View Projects
               </Button>
 
-              {profile.resumeUrl && profile.resumeUrl !== '#' ? (
-                <Button
-                  href={profile.resumeUrl}
-                  variant="secondary"
-                  icon={<FiDownload />}
-                >
-                  Download Resume
-                </Button>
-              ) : (
-                <Button to="/contact" variant="secondary">
-                  Contact Me
-                </Button>
-              )}
+              <Button to="/contact" variant="secondary">
+                Contact Me
+              </Button>
+
+              <Button
+                href={resumeDownloadUrl}
+                variant="outline"
+                icon={<FiDownload />}
+              >
+                Download CV
+              </Button>
             </div>
           </div>
 

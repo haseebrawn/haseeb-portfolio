@@ -14,6 +14,7 @@ import {
 } from 'react-icons/fi'
 import { adminProfileService } from '../../services/adminProfileService'
 import ImageUpload from '../../components/admin/uploads/ImageUpload'
+import FileUpload from '../../components/admin/uploads/FileUpload'
 import {useToast} from '../../context/ToastContext'
 
 const initialForm = {
@@ -425,6 +426,30 @@ const ProfileManager = () => {
                   className={inputClass}
                   placeholder="Image URL"
                 />
+              </div>
+
+              <div className="mt-5">
+                <FileUpload
+                  label="Upload CV PDF"
+                  folder="resumes"
+                  value={formData.resumeUrl}
+                  onUpload={(url) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      resumeUrl: url,
+                    }))
+                  }
+                  onRemove={() =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      resumeUrl: '',
+                    }))
+                  }
+                />
+
+                <p className="mt-2 text-xs text-muted">
+                  CV URL saves in MongoDB after clicking Save Profile.
+                </p>
               </div>
 
               <div className="mt-5">

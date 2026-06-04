@@ -1,5 +1,6 @@
 const Profile = require('../models/Profile')
 const asyncHandler = require('../utils/asyncHandler')
+const path = require('path')
 
 const defaultProfile = {
   name: 'Muhammad Haseeb',
@@ -33,6 +34,31 @@ const getProfile = asyncHandler(async (req, res) => {
     success: true,
     data: profile,
   })
+})
+
+const downloadResume = asyncHandler(async (req, res) => {
+  const profile = await Profile.findOne()
+  const resumeUrl = profile?.resumeUrl
+
+  if (!resumeUrl || resumeUrl === '#') {
+    res.status(404)
+    throw new Error('Resume is not available yet')
+  }
+
+  const uploadPath = resumeUrl.match(/\/uploads\/(.+)$/)?.[1]
+
+  if (uploadPath) {
+    const relativePath = uploadPath
+    const filePath = path.join(__dirname, '..', 'uploads', relativePath)
+
+    return res.download(filePath, 'Muhammad-Haseeb-CV.pdf')
+  }
+
+  if (/^https?:\/\//i.test(resumeUrl)) {
+    return res.redirect(resumeUrl)
+  }
+
+  return res.redirect(resumeUrl)
 })
 
 const updateProfile = asyncHandler(async (req, res) => {
@@ -94,5 +120,6 @@ const updateProfile = asyncHandler(async (req, res) => {
 
 module.exports = {
   getProfile,
+  downloadResume,
   updateProfile,
 }

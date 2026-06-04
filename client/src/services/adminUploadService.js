@@ -1,9 +1,9 @@
 import api from './api'
 
 export const adminUploadService = {
-  uploadSingle: async (file, folder = 'general') => {
+  uploadSingle: async (file, folder = 'general', fieldName = 'image') => {
     const formData = new FormData()
-    formData.append('image', file)
+    formData.append(fieldName, file)
 
     const response = await api.post(
       `/admin/uploads/single?folder=${folder}`,

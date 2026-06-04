@@ -33,6 +33,7 @@ const storage = multer.diskStorage({
 })
 
 const fileFilter = (req, file, cb) => {
+  const folder = sanitizeFolderName(req.query.folder || 'general')
   const allowedTypes = [
     'image/jpeg',
     'image/jpg',
@@ -40,11 +41,14 @@ const fileFilter = (req, file, cb) => {
     'image/webp',
     'image/gif',
   ]
+  const allowedPdfTypes = ['application/pdf']
 
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true)
+  } else if (folder === 'resumes' && allowedPdfTypes.includes(file.mimetype)) {
+    cb(null, true)
   } else {
-    cb(new Error('Only image files are allowed'), false)
+    cb(new Error('Only image files are allowed, except PDF files for resumes'), false)
   }
 }
 
@@ -52,7 +56,7 @@ const upload = multer({
   storage,
   fileFilter,
   limits: {
-    fileSize: 5 * 1024 * 1024,
+    fileSize: 10 * 1024 * 1024,
   },
 })
 

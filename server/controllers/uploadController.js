@@ -11,14 +11,14 @@ const getFileUrl = (req, file) => {
 const uploadSingleImage = asyncHandler(async (req, res) => {
   if (!req.file) {
     res.status(400)
-    throw new Error('Please upload an image')
+    throw new Error('Please upload a file')
   }
 
   const fileUrl = getFileUrl(req, req.file)
 
   res.status(201).json({
     success: true,
-    message: 'Image uploaded successfully',
+    message: 'File uploaded successfully',
     file: {
       url: fileUrl,
       filename: req.file.filename,
@@ -32,7 +32,7 @@ const uploadSingleImage = asyncHandler(async (req, res) => {
 const uploadMultipleImages = asyncHandler(async (req, res) => {
   if (!req.files || req.files.length === 0) {
     res.status(400)
-    throw new Error('Please upload at least one image')
+    throw new Error('Please upload at least one file')
   }
 
   const files = req.files.map((file) => ({
@@ -45,7 +45,7 @@ const uploadMultipleImages = asyncHandler(async (req, res) => {
 
   res.status(201).json({
     success: true,
-    message: 'Images uploaded successfully',
+    message: 'Files uploaded successfully',
     files,
   })
 })

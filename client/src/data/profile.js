@@ -5,6 +5,7 @@ export const profile = {
   location: 'Pakistan',
   email: 'hello@muhammadhaseeb.dev',
   phone: '+92 300 1234567',
+  resumeUrl: '#',
   summary:
     'I build modern, responsive, and scalable web applications using the MERN stack that deliver clean user experiences and reliable functionality.',
   socials: {

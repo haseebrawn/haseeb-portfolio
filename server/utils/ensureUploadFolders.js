@@ -6,6 +6,7 @@ const ensureUploadFolders = () => {
     path.join(__dirname, '..', 'uploads'),
     path.join(__dirname, '..', 'uploads', 'avatars'),
     path.join(__dirname, '..', 'uploads', 'projects'),
+    path.join(__dirname, '..', 'uploads', 'resumes'),
     path.join(__dirname, '..', 'uploads', 'general'),
   ]
 
