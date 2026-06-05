@@ -30,7 +30,7 @@ const HomeCTA = () => {
               <Button
                 to="/projects"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-primary"
+                className="border-white text-white hover:bg-white hover:!text-blue-600"
                 icon={<FiArrowRight />}
               >
                 View Projects

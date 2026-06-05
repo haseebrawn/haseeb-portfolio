@@ -23,6 +23,12 @@ const defaultProfile = {
   },
 }
 
+const normalizeExternalUrl = (url) => {
+  if (!url || url === '#') return '#'
+  if (/^(https?:|mailto:|tel:)/i.test(url)) return url
+  return `https://${url}`
+}
+
 const getProfile = asyncHandler(async (req, res) => {
   let profile = await Profile.findOne()
 
@@ -95,9 +101,9 @@ const updateProfile = asyncHandler(async (req, res) => {
     resumeUrl,
     avatar,
     socials: {
-      github: socials?.github || '#',
-      linkedin: socials?.linkedin || '#',
-      twitter: socials?.twitter || '#',
+      github: normalizeExternalUrl(socials?.github),
+      linkedin: normalizeExternalUrl(socials?.linkedin),
+      twitter: normalizeExternalUrl(socials?.twitter),
       email: socials?.email || `mailto:${email}`,
     },
   }

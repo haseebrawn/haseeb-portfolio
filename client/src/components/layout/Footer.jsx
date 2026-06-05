@@ -3,9 +3,26 @@ import { Link } from 'react-router-dom'
 import Container from '../common/Container'
 import { useProfile } from '../../context/ProfileContext'
 
+const formatExternalUrl = (url) => {
+  if (!url || url === '#') return ''
+  if (/^(https?:|mailto:|tel:)/i.test(url)) return url
+  return `https://${url}`
+}
+
+const getGmailComposeUrl = (email) => {
+  if (!email) return ''
+
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+    email
+  )}`
+}
+
 const Footer = () => {
   const { profile } = useProfile()
   const currentYear = new Date().getFullYear()
+  const githubUrl = formatExternalUrl(profile.socials?.github)
+  const linkedinUrl = formatExternalUrl(profile.socials?.linkedin)
+  const gmailUrl = getGmailComposeUrl(profile.email)
 
   const initials =
     profile.name
@@ -36,9 +53,9 @@ const Footer = () => {
             </p>
 
             <div className="mt-6 flex gap-3">
-              {profile.socials?.github && profile.socials.github !== '#' && (
+              {githubUrl && (
                 <a
-                  href={profile.socials.github}
+                  href={githubUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-white transition hover:bg-primary"
@@ -47,9 +64,9 @@ const Footer = () => {
                 </a>
               )}
 
-              {profile.socials?.linkedin && profile.socials.linkedin !== '#' && (
+              {linkedinUrl && (
                 <a
-                  href={profile.socials.linkedin}
+                  href={linkedinUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-white transition hover:bg-primary"
@@ -58,9 +75,11 @@ const Footer = () => {
                 </a>
               )}
 
-              {profile.email && (
+              {gmailUrl && (
                 <a
-                  href={`mailto:${profile.email}`}
+                  href={gmailUrl}
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-white transition hover:bg-primary"
                 >
                   <FiMail />
@@ -98,9 +117,11 @@ const Footer = () => {
             <h3 className="text-lg font-black">Contact Info</h3>
 
             <div className="mt-5 space-y-4 text-sm text-white/70">
-              {profile.email && (
+              {gmailUrl && (
                 <a
-                  href={`mailto:${profile.email}`}
+                  href={gmailUrl}
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex items-center gap-3 transition hover:text-white"
                 >
                   <FiMail className="text-primary" />

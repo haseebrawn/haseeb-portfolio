@@ -5,28 +5,28 @@ import Card from '../common/Card'
 
 const timeline = [
   {
-    year: '2022',
+    year: '2024',
     title: 'Started My Journey',
     description:
       'Began learning web development and built my first projects with HTML, CSS, and JavaScript.',
     icon: FiZap,
   },
   {
-    year: '2022 - 2023',
+    year: '2024',
     title: 'Frontend Development',
     description:
       'Focused on building responsive user interfaces with React.js and modern frontend tools.',
     icon: FiCode,
   },
   {
-    year: '2023 - 2024',
+    year: '2024 - 2025',
     title: 'MERN Stack Developer',
     description:
       'Started building full-stack applications with MongoDB, Express.js, React.js, and Node.js.',
     icon: FiLayers,
   },
   {
-    year: '2024 - Present',
+    year: '2025 - Present',
     title: 'Building & Growing',
     description:
       'Continuing to build scalable web apps, improve backend skills, and work on real-world projects.',

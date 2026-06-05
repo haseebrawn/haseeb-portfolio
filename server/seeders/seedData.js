@@ -365,6 +365,16 @@ const skills = [
     displayOrder: 3,
   },
   {
+    name: 'Inertia.js',
+    category: 'Frontend',
+    icon: 'SiInertia',
+    color: 'text-purple-600',
+    level: 'Intermediate',
+    percentage: 72,
+    description: 'Building modern single-page experiences with server-side frameworks.',
+    displayOrder: 4,
+  },
+  {
     name: 'Node.js',
     category: 'Backend',
     icon: 'SiNodedotjs',
@@ -372,7 +382,7 @@ const skills = [
     level: 'Advanced',
     percentage: 78,
     description: 'Building scalable backend logic and server-side applications.',
-    displayOrder: 4,
+    displayOrder: 5,
   },
   {
     name: 'Express.js',
@@ -382,7 +392,7 @@ const skills = [
     level: 'Advanced',
     percentage: 80,
     description: 'Creating REST APIs, middleware, routes, and backend structure.',
-    displayOrder: 5,
+    displayOrder: 6,
   },
   {
     name: 'REST APIs',
@@ -392,7 +402,7 @@ const skills = [
     level: 'Advanced',
     percentage: 84,
     description: 'Connecting frontend and backend through clean API endpoints.',
-    displayOrder: 6,
+    displayOrder: 7,
   },
   {
     name: 'MongoDB',
@@ -402,7 +412,7 @@ const skills = [
     level: 'Advanced',
     percentage: 80,
     description: 'Designing collections, schemas, and database-driven features.',
-    displayOrder: 7,
+    displayOrder: 8,
   },
   {
     name: 'Mongoose',
@@ -412,7 +422,17 @@ const skills = [
     level: 'Advanced',
     percentage: 80,
     description: 'Creating models, relationships, validation, and queries.',
-    displayOrder: 8,
+    displayOrder: 9,
+  },
+  {
+    name: 'MySQL',
+    category: 'Database',
+    icon: 'SiMysql',
+    color: 'text-blue-600',
+    level: 'Intermediate',
+    percentage: 70,
+    description: 'Working with relational database tables, queries, and structured data.',
+    displayOrder: 10,
   },
   {
     name: 'JWT Auth',
@@ -422,7 +442,7 @@ const skills = [
     level: 'Advanced',
     percentage: 80,
     description: 'Building secure login systems and protected routes.',
-    displayOrder: 9,
+    displayOrder: 11,
   },
   {
     name: 'Git',
@@ -432,7 +452,7 @@ const skills = [
     level: 'Advanced',
     percentage: 80,
     description: 'Version control, commits, branches, and project history.',
-    displayOrder: 10,
+    displayOrder: 12,
   },
   {
     name: 'GitHub',
@@ -442,7 +462,7 @@ const skills = [
     level: 'Advanced',
     percentage: 85,
     description: 'Managing repositories, source code, and collaboration.',
-    displayOrder: 11,
+    displayOrder: 13,
   },
   {
     name: 'Postman',
@@ -452,7 +472,7 @@ const skills = [
     level: 'Advanced',
     percentage: 85,
     description: 'Testing REST APIs, requests, responses, and backend endpoints.',
-    displayOrder: 12,
+    displayOrder: 14,
   },
   {
     name: 'npm',
@@ -462,7 +482,7 @@ const skills = [
     level: 'Advanced',
     percentage: 80,
     description: 'Managing packages, scripts, and project dependencies.',
-    displayOrder: 13,
+    displayOrder: 15,
   },
   {
     name: 'Vercel',
@@ -472,7 +492,7 @@ const skills = [
     level: 'Basic',
     percentage: 65,
     description: 'Deploying React frontend applications.',
-    displayOrder: 14,
+    displayOrder: 16,
   },
   {
     name: 'Netlify',
@@ -482,7 +502,7 @@ const skills = [
     level: 'Basic',
     percentage: 65,
     description: 'Hosting frontend projects and static websites.',
-    displayOrder: 15,
+    displayOrder: 17,
   },
 ]
 
