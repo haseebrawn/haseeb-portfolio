@@ -8,8 +8,16 @@ import {
 import Card from '../common/Card'
 import { useProfile } from '../../context/ProfileContext'
 
+const formatExternalUrl = (url) => {
+  if (!url || url === '#') return null
+  if (/^(https?:|mailto:|tel:)/i.test(url)) return url
+  return `https://${url}`
+}
+
 const ContactInfo = () => {
   const { profile } = useProfile()
+  const linkedinUrl = formatExternalUrl(profile.socials?.linkedin)
+  const githubUrl = formatExternalUrl(profile.socials?.github)
 
   const contactItems = [
     {
@@ -34,13 +42,13 @@ const ContactInfo = () => {
       icon: FiLinkedin,
       label: 'LinkedIn',
       value: profile.socials?.linkedin || 'Not added',
-      href: profile.socials?.linkedin,
+      href: linkedinUrl,
     },
     {
       icon: FiGithub,
       label: 'GitHub',
       value: profile.socials?.github || 'Not added',
-      href: profile.socials?.github,
+      href: githubUrl,
     },
   ].filter((item) => item.value && item.value !== '#')
 

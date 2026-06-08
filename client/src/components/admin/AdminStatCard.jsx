@@ -7,9 +7,9 @@ const AdminStatCard = ({
   loading = false,
 }) => {
   return (
-    <div className="card-soft p-6">
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0 flex-1">
+    <div className="card-soft flex min-h-[220px] p-6">
+      <div className="flex w-full items-start justify-between gap-4">
+        <div className="flex min-w-0 flex-1 flex-col self-stretch">
           <p className="text-sm font-semibold text-muted">{title}</p>
 
           {loading ? (
@@ -23,7 +23,7 @@ const AdminStatCard = ({
           )}
 
           {trend && (
-            <p className="mt-3 inline-flex max-w-full rounded-full bg-soft px-4 py-2 text-xs font-bold leading-5 text-primary">
+            <p className="mt-auto inline-flex max-w-full rounded-full bg-soft px-4 py-2 text-xs font-bold leading-5 text-primary">
               {trend}
             </p>
           )}

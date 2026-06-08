@@ -274,12 +274,12 @@ const SkillsManager = () => {
                   </div>
 
                   <div className="mt-5">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h2 className="text-xl font-black text-dark">
+                    <div className="flex min-w-0 items-center gap-2">
+                      <h2 className="min-w-0 flex-1 truncate text-xl font-black text-dark">
                         {skill.name}
                       </h2>
 
-                      <span className="rounded-full bg-soft px-3 py-1 text-xs font-bold text-primary">
+                      <span className="shrink-0 rounded-full bg-soft px-3 py-1 text-xs font-bold text-primary">
                         {skill.level}
                       </span>
                     </div>

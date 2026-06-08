@@ -15,8 +15,10 @@ const initialForm = {
 
 const iconOptions = [
   'SiReact',
+  'SiInertia',
   'SiJavascript',
   'SiTailwindcss',
+  'SiMysql',
   'SiNodedotjs',
   'SiExpress',
   'SiMongodb',
@@ -34,6 +36,8 @@ const iconOptions = [
 const colorOptions = [
   'text-primary',
   'text-cyan-500',
+  'text-blue-600',
+  'text-purple-600',
   'text-yellow-500',
   'text-green-600',
   'text-orange-600',
