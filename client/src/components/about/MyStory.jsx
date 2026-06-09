@@ -54,26 +54,30 @@ const MyStory = () => {
           <div>
             <SectionTitle
               badge="My Story"
-              title="MERN Stack developer focused on practical web solutions"
-              description={profile.aboutStory || profile.summary}
+              title="Software Engineer building reliable, modern web applications"
+              description="I am a Software Engineer focused on building clean, responsive, and scalable web applications with practical business value. My work combines frontend polish, backend structure, database design, and real-world problem solving to create digital products that are easy to use, maintain, and grow."
             />
 
             <div className="space-y-5 text-base leading-8 text-muted">
               <p>
-                I work with React.js, Node.js, Express.js, and MongoDB to build
-                modern full-stack web applications with clean structure,
-                responsive design, and scalable backend APIs.
+                I work with React.js, Node.js, Express.js, MongoDB, MySQL,
+                Inertia.js, and Tailwind CSS to develop full-stack applications
+                with strong UI quality, reusable components, secure APIs, and
+                organized database structures.
               </p>
 
               <p>
-                My focus is to create portfolio-ready, business-ready, and
-                user-friendly applications that are easy to maintain and improve
-                over time.
+                My experience includes portfolio websites, admin dashboards,
+                CRUD systems, authentication flows, contact management,
+                project showcases, CV/resume features, and responsive pages
+                built for both users and administrators.
               </p>
 
               <p>
-                I enjoy working on dashboards, admin panels, ecommerce features,
-                authentication systems, REST APIs, and database-driven platforms.
+                I focus on writing maintainable code, improving user experience,
+                and delivering features that solve real needs. Every project I
+                build is treated as a step toward becoming a stronger and more
+                dependable software engineer.
               </p>
             </div>
           </div>

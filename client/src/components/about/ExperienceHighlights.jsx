@@ -6,27 +6,27 @@ import Card from '../common/Card'
 const highlights = [
   {
     icon: FiBriefcase,
-    value: '20+',
+    value: '9',
     title: 'Projects Completed',
-    description: 'Practice, client, and personal full-stack projects.',
+    description: 'Portfolio, CV/resume, practice, and full-stack web projects.',
   },
   {
     icon: FiUsers,
-    value: '10+',
+    value: '3',
     title: 'Happy Users',
-    description: 'Projects focused on smooth and useful user experience.',
+    description: 'Real users helped through clean and practical web solutions.',
   },
   {
     icon: FiCode,
-    value: '15K+',
+    value: '10K+',
     title: 'Lines of Code',
     description: 'Clean and maintainable frontend and backend code.',
   },
   {
     icon: FiClock,
-    value: '1000+',
+    value: '5K+',
     title: 'Hours Coded',
-    description: 'Time spent learning, building, debugging, and improving.',
+    description: 'Daily software-house work, learning, building, and debugging.',
   },
 ]
 
